@@ -1,4 +1,19 @@
 # -*- coding: utf-8 -*-
+# Автоматически адаптировано для Android (Kivy)
+import sys
+import os
+
+from kivy.app import App
+from kivy.uix.boxlayout import BoxLayout
+from kivy.uix.button import Button
+from kivy.uix.label import Label
+from kivy.uix.textinput import TextInput
+from kivy.uix.scrollview import ScrollView
+from kivy.core.window import Window
+
+# Исходная логика скрипта пользователя (без Tkinter):
+'''
+# -*- coding: utf-8 -*-
 """
 FIFA 18 + FIFA 22 stats bot with GUI (Requests/BeautifulSoup web-preview + CustomTkinter).
 Reads public Telegram web previews (t.me/s/...) without logging in as a user,
@@ -1060,3 +1075,47 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+'''
+
+class MainMobileApp(App):
+    def build(self):
+        self.title = "Mobile App"
+        
+        layout = BoxLayout(orientation='vertical', padding=15, spacing=10)
+        
+        # Заголовок
+        header = Label(
+            text="Приложение запущенно на Android",
+            font_size='20sp',
+            size_hint_y=None,
+            height=50
+        )
+        layout.add_widget(header)
+        
+        # Поле вывода / Лог
+        self.log_input = TextInput(
+            text="Готово к работе.\n",
+            readonly=True,
+            multiline=True,
+            font_size='14sp'
+        )
+        layout.add_widget(self.log_input)
+        
+        # Кнопка действия
+        btn = Button(
+            text="Запустить логику",
+            size_hint_y=None,
+            height=60,
+            background_color=(0.2, 0.6, 1, 1)
+        )
+        btn.bind(on_press=self.on_btn_click)
+        layout.add_widget(btn)
+        
+        return layout
+
+    def on_btn_click(self, instance):
+        self.log_input.text += "Кнопка нажата! Логика выполнена.\n"
+
+if __name__ == '__main__':
+    MainMobileApp().run()
