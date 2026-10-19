@@ -1084,16 +1084,14 @@ class MainMobileApp(App):
         
         layout = BoxLayout(orientation='vertical', padding=15, spacing=10)
         
-        # Заголовок
         header = Label(
-            text="Приложение запущенно на Android",
+            text="Приложение запущено на Android",
             font_size='20sp',
             size_hint_y=None,
             height=50
         )
         layout.add_widget(header)
         
-        # Поле вывода / Лог
         self.log_input = TextInput(
             text="Готово к работе.\n",
             readonly=True,
@@ -1102,7 +1100,6 @@ class MainMobileApp(App):
         )
         layout.add_widget(self.log_input)
         
-        # Кнопка действия
         btn = Button(
             text="Запустить логику",
             size_hint_y=None,
