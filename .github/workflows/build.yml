@@ -27,19 +27,12 @@ jobs:
           sudo apt-get install -y git zip unzip autoconf libtool pkg-config zlib1g-dev libncurses5-dev libncursesw5-dev libffi-dev libssl-dev cmake build-essential
           pip install --upgrade buildozer Cython==0.29.33
 
-      - name: Install Android NDK r25b
-        run: |
-          mkdir -p /home/runner/ndk
-          cd /home/runner/ndk
-          wget -q https://dl.google.com/android/repository/android-ndk-r25b-linux.zip
-          unzip -q android-ndk-r25b-linux.zip
-
       - name: Build APK with Buildozer
         env:
-          ANDROID_NDK_HOME: /home/runner/ndk/android-ndk-r25b
-          ANDROIDNDK: /home/runner/ndk/android-ndk-r25b
+          ANDROID_NDK_HOME: /usr/local/lib/android/sdk/ndk/25.2.9519653
+          ANDROIDNDK: /usr/local/lib/android/sdk/ndk/25.2.9519653
         run: |
-          yes | buildozer -v android debug arch:arm64-v8a
+          yes | buildozer -v android debug
 
       - name: Upload APK artifact
         uses: actions/upload-artifact@v4
