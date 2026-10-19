@@ -1,6 +1,6 @@
 [app]
-title = MyCloudApp
-package.name = mycloudapp
+title = FIFA
+package.name = fifa
 package.domain = org.cloud
 source.include_exts = py,png,jpg,kv,atlas
 source.dir = .
