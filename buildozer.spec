@@ -5,7 +5,7 @@ package.domain = org.fifa
 source.include_exts = py,png,jpg,kv,atlas
 source.dir = .
 version = 1.0
-requirements = python3,kivy
+requirements = python3,kivy,requests,urllib3,pillow
 orientation = portrait
 fullscreen = 0
 
