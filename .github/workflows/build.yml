@@ -39,7 +39,7 @@ jobs:
           ANDROID_NDK_HOME: /home/runner/ndk/android-ndk-r25b
           ANDROIDNDK: /home/runner/ndk/android-ndk-r25b
         run: |
-          yes | buildozer -v android debug
+          yes | buildozer -v android debug arch:arm64-v8a
 
       - name: Upload APK artifact
         uses: actions/upload-artifact@v4
