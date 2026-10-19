@@ -5,7 +5,7 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -24,10 +24,20 @@ jobs:
       - name: Install system dependencies
         run: |
           sudo apt-get update
-          sudo apt-get install -y git zip unzip autoconf libtool pkg-config zlib1g-dev libncurses5-dev libncursesw5-dev libffi-dev libssl-dev
+          sudo apt-get install -y git zip unzip autoconf libtool pkg-config zlib1g-dev libncurses5-dev libncursesw5-dev libffi-dev libssl-dev cmake build-essential
           pip install --upgrade buildozer Cython==0.29.33
 
+      - name: Install Android NDK r25b
+        run: |
+          mkdir -p /home/runner/ndk
+          cd /home/runner/ndk
+          wget -q https://dl.google.com/android/repository/android-ndk-r25b-linux.zip
+          unzip -q android-ndk-r25b-linux.zip
+
       - name: Build APK with Buildozer
+        env:
+          ANDROID_NDK_HOME: /home/runner/ndk/android-ndk-r25b
+          ANDROIDNDK: /home/runner/ndk/android-ndk-r25b
         run: |
           yes | buildozer -v android debug
 
